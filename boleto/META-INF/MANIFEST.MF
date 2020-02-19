@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: 1.6.0_26-b03-384-10M3425 (Apple Inc.)
+Built-By: Boleto Bancario . com
+
+Name: Build data
+Date: 30/05/2012 22:37:38
+License: 11222333444455
+Vendor: http://www.boletobancario.com
+Sealed: true
+

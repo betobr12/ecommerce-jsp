@@ -1,0 +1,257 @@
+3.5.3.RC1 - 30/05/2012
+
+  - Opcao para emitir boleto aberto, onde vencimento e valor ficam zerados na linha
+    digitavel e codigo de barras. (Todos)
+    
+
+3.5.2 - 16/05/2012
+  
+  - Possibilidade de gerar boletos em formato HTML. (Boleto Direto)
+  - Possibilidade de definir o nome do arquivo gerado quando utilizados arquivos de
+    propriedades como fonte de dados. (Boleto Direto)
+  - Opcao de gerar boletos em modo demonstrativo (sem codigo de barras). (Todos)
+  - Opcao de uso de carteira registrada para o Banco Sicredi. (Todos)
+
+
+3.5.1 - 02/04/2012
+
+  - Novo layout: 'minimo'. Formato carnet em A4 retrato. (Boleto Direto)
+  - Log em modo info exibe o nome das impressoras encontradas. (Boleto Direto)
+  - CNAB400 Sicredi - Alterado para gerar o nosso numero completo. (Boleto Direto)
+  - Carregamento de arquivos de configuracao conforme padrao JEE. (Boleto Direto)
+  - Possibilidade de sobrescrever valores na geracao de arquivos de remessa. (Boleto Direto)
+  
+
+3.5.0 - 16/03/2012
+
+  - Boleto Direto agora e capaz de gerar arquivos de remessa. (Boleto Direto)
+  - Suporte para geracao de arquivo de remessa CNAB400 para Sicredi. (Boleto Direto)
+  - Boletos Bancoob/Sicoob agora aceitam qualquer carteira. (Todos)
+  - Suporte para leitura de arquivos CNAB240 do Santander. (Boleto Direto)
+  - Possibilidade de definir o logotipo do banco. (Todos)
+  - Adicionado novo layout com margens laterais maiores. (Boleto Direto)
+
+
+3.4.3 - 19/12/2011
+
+  - Adicao de banco - Banespa (Santander Banespa, modelo legado). (Todos)
+  - Banco do Brasil - Sistema atualizado conforme especificacoes mais recentes
+    do banco. (Todos) 
+  
+
+3.4.2 - 20/09/2011
+
+  - Deploy no JBoss agora pode ser feito com o WAR empacotado. (Boleto Web)
+  - Possibilidade de sobrescrever opcoes de configuracao. (Boleto Direto)
+  - Possibilidade de enviar e-mails sem anexos. (Boleto Web)
+  - Possibilidade de definir o charset para os e-mails. (Todos)
+  - Correcao: Problema de reconhecimento de licenca quando o numero do convenio
+    do Banco do Brasil tinha exatamente 5 digitos. (Todos)
+
+
+3.4.1 - 14/07/2011
+
+  - Novo modulo para envio de emails com mais opcoes - SmartMailSender. (Todos)
+  - Possibilidade de utilizar variaveis do boleto no corpo e assunto dos emails. (Todos)
+  - Modulo de envio de email agora suporta retentativas. (Todos)
+  - Possibilidade de enviar cada email em copia para um ou mais enderecos. (Todos)
+  - Versao do JavaMail que acompanha o sistema atualizada de 1.4.1 para 1.4.4. (Todos)
+  - Adicao de banco - Banco do Nordeste. (Todos)
+  - Suporte para leitura de arquivos CNAB 400 do Deutsche Bank. (Boleto Direto) 
+  - Correcao: Em alguns casos uma mensagem de erro de configuracao era apresentada mesmo
+    para uma configuracao valida. (Boleto Direto)
+
+
+3.4.0 - 22/06/2011
+
+  - Boleto Direto foi completamente refeito:
+    
+       - Algumas propriedades de configuracao foram renomeadas ou movidas, eh preciso
+         alterar arquivos de configuracao existentes para utiliza-los com a nova versao.
+         A grande maioria das opcoes eh compativel com versoes anteriores, fazendo com
+         que o esforco de migracao seja minimo.
+       
+       - O Boleto Direto nao suporta mais a geracao em formato HTML uma vez que o
+         formato PDF e mais adequado para impressao direta e envio por email.
+         
+    - Agora suporta impressao frente e verso (duplex).
+    - Suporte para geracao de boletos a partir de arquivos padrao CNAB.
+    - Melhoria de performance na geracao de boletos.
+    - Maior detalhamento de eventos em mensagens de log.
+    - Adicionada possibilidade de execucao em modo multi-thread para maior velocidade.
+    - Possibilidade de especificar o nome do arquivo de configuracao a ser utilizado.  
+  
+  - A instrucao "pos" na customizacao PDF agora alem de reposicionar o cursor, altera
+    a margem esquerda para os elementos seguintes. (Todos)
+    
+  - Modelo de excecoes alterado para lancar apenas unchecked exceptions. (Todos)
+  - API para criacao de documento PDF foi alterada, deve-se alterar nas aplicacoes, por ex:
+    
+    de: new BoletoPDFFormatter().createSlim( boleto, response.getOutputStream() );
+    para: new BoletoPDFFormatter( boleto, BoletoPDFFormatter.LAYOUT_NORMAL, 
+                                  response.getOutputStream() ).format();
+  
+  - Possibilidade de utilizar variaveis nos campos customizados. (Todos)
+  - Possibilidade de enviar cada email para multiplos destinatarios. (Todos)                     
+  - Correcao - Em uso concorrente o envio por email poderia falhar. (Boleto Web)
+  - Adicao de banco - Banco: Credisan. (Todos)
+  - Suporte para leitura de arquivos CNAB 400 do CitiBank. (Boleto Direto)
+  - Incluida documentacao detalhada sobre o conteudo da aplicacao entregue. (Boleto Web) 
+
+
+3.3.5 - 22/11/2010
+
+  - Correcao - Em algumas situacoes os boletos nao estavam sendo gerados. (Boleto Direto)
+  - Possibilidade de definir se o envio por email deve utilizar conexao segura. (Boleto Web)
+  - Possibilidade de alterar a mensagem "Texto de responsabilidade do cedente". (Todos)
+
+
+3.3.4 - 14/07/2010
+  
+  - Possibilidade de sobreescrever o layout padrao para cada boleto. (Boleto Direto)
+  - Agora e possivel inserir elementos (texto e imagens) da customizacao PDF em
+    coordenadas especificas. (Todos)
+  - Possibilidade de inserir retangulos e linhas dinamicamente na customizacao PDF. (Todos)
+  - Possibilidade de alterar a cor do texto e elementos graficos na customizacao PDF. (Todos)
+  - Acentuacao removida de todas as mensagens de erro possiveis. (Todos)
+
+
+3.3.3 - 17/05/2010
+  
+  - Alteracao de nome de banco de "Bansicredi" para "Sicredi". (Todos)
+  - Suporte a carteiras de 15 digitos - Banco: Itau. (Todos)
+  - Adicionado suporte a geracao/impressao no layout carnet com 3 boletos por 
+    folha A4. (Boleto Direto)
+  - Nova funcionalidade de agrupamento de boletos. (Boleto Direto)
+
+
+3.3.2 - 21/12/2009
+
+  - Adicao de banco - Banco: Bancoob. (Todos)
+  - Criacao de metodos auxiliares para todos os campos formato moeda. (Boleto Web)
+  - Agora e feita validacao do campo "Parcela" quando definido. (Todos)
+  - Agora o campo "Valor Cobrado", se utilizado, define o valor final do boleto no codigo
+    de barras e linha digitavel. (Todos)
+  - O campo "Desconto" nos recibos finos agora e preenchido automaticamente com a soma dos
+    descontos. (Todos)
+  - O campo "Acrescimos" nos recibos finos agora e preenchido automaticamente com a soma
+    dos acrescimos. (Todos)
+
+
+3.3.1 - 23/10/2009
+
+  - Adicao de banco - Banco: Banestes. (Todos)
+  - Adequacao a novos padroes - Banco: Banrisul. (Todos)
+
+
+3.3.0 - 19/05/2009
+ 
+  - Suporte a geracao de multiplos boletos em um documento, PDF ou HTML. (Boleto Web)
+  - Boleto do Banco do Brasil agora aceita qualquer variacao de carteira. (Todos)
+
+
+3.2.3 - 31/03/2009
+
+ - Imagens na customizacao de PDF podem agora apontar para URLs. (Todos)
+ - Adicao de banco - Banco: Banpara. (Todos)
+ - Arquivo de licencas agora pode ser empacotado em um JAR. (Todos) 
+ - Adicao de carteira - Banco: Banco do Brasil, Carteira: 18/981. (Todos)
+ - Adicao de carteira - Banco: Banco do Brasil, Carteira: 18/914. (Todos)
+ - Adicao de carteira - Banco: Banco do Brasil, Carteira: 18/027. (Todos)
+
+
+3.2.2 - 09/02/2009
+
+ - Adicao de carteira - Banco: Banco do Brasil, Carteira: 18/086. (Todos)
+ - Liberados campos necessarios para emissao de boletos em moedas
+   diferentes de Real. (Todos)
+ - Agora pode ser passado tambem o numero do banco como parametro para
+   configurar a factory. (Boleto Web)
+ - Melhoria de performance no tratamento de alto numero de requisicoes
+   simultaneas. (Boleto Web)
+
+
+3.2.1 - 29/10/2008
+ 
+ - Retornado suporte a Java 1.4. (Boleto Web)
+ - Adicionados novos layouts para impressao. (Boleto Direto)
+ - Adicao de carteira - Banco: Unibanco, Carteira: Caucao (6). (Todos)
+ - Correcao - Banco do Brasil: Em alguns casos o "Nosso Numero" estava sendo
+   apresentado com DV, sendo que esta informacao nao era necessaria.
+   Este bug nao interferia no pagamento e compensacao de boletos. (Todos)
+
+
+3.2.0 - 08/09/2008
+
+ - Refactoring para Java 1.5. (Todos)
+ - Melhoria na performance da impressao de boletos (85%). (Boleto Direto)
+ - Melhoria na performance da geracao de boletos (23%). (Todos)
+ - Suporte a utilizacao de negrito nas mensagens do campo "Instrucoes". (Todos)
+ - Suporte a selecao de impressora. (Boleto Direto)
+ - Adicao de carteiras - Banco: Caixa - Carteiras: 14 (RG) e 24 (SR). (Todos)
+ - Adequacao a novos padroes - Banco: Sicredi. (Todos)
+
+
+3.1.2 - 29/07/2008
+
+ - Adicionado suporte a impressao em folha A5. (Boleto Direto)
+ - Alteracao da representacao numerica em boletos "Contra Apresentacao". (Todos)
+ - Correcao: Em alguns leitores de PDF mais antigos era exibido um erro
+   durante a abertura do documento. Entretanto a visualizacao e impressao
+   ocorriam sem problemas. (Todos)
+
+
+3.1.1 - 07/07/2008
+
+ - Correcao - Santander: Em alguns casos o digito verificador do nosso
+   numero era calculado incorretamente. Reportado em homologacao. (Todos)
+ 
+ - Integracao com sistemas em Java agora e mais transparente, sem a
+   necessidade de geracao de arquivos intermediarios. (Boleto Direto)
+
+
+3.1.0 - 26/05/2008
+
+ - Boleto Direto agora e independente de plataforma. (Boleto Direto)
+ - Suporte para geracao de boletos em PDF. (Todos)
+ - Suporte para envio por email de boletos PDF. (Todos)
+
+
+3.0.5 - 30/04/2008
+
+ - Correcao - Bradesco: Em alguns casos o digito verificador da agencia
+   ou do codigo do cedente era calculado incorretamente.
+   Este bug nao interferia no pagamento e compensacao de boletos. (Todos)
+
+
+3.0.4 - 26/03/2008
+
+ - Adicao de banco - Banco: Nossa Caixa. (Todos)
+ 
+
+3.0.3 - 11/03/2008
+
+ - Adequacao a novos padroes - Banco: Caixa, Carteira: SR. (Todos)
+ - Adicao de carteira - Banco: Caixa, Carteira: CR. (Todos)
+
+
+3.0.2 - 08/02/2008
+
+ - Remoção do banner na parte superior. (Boleto Free)
+
+
+3.0.1 - 28/01/2008
+
+ - Alteracao para uso do Log4j como mecanismo de log. (Boleto Direto)
+ - Ajustes finos na performace e uso de memoria. (Todos)
+ - Manual para integracao com aplicacoes Java. (Boleto Direto)
+
+
+3.0.0 - 05/09/2007
+
+ - Resultado mais leve (cerca de 10KB) para maior velocidade. (Todos)
+ - Resultado modificado de HTML para XHTML. (Todos)
+ - Refatoramento completo da aplicacao. (Todos)
+ - Validacao de campos nao obrigatorios (onde aplicavel). (Todos)
+ 
+ 

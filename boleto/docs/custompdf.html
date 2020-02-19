@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt" lang="pt">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Boleto Bancário . com - Exemplos</title>
+		<link rel="shortcut icon" href="http://www.boletobancario.com/favicon.ico" />
+		<link href="../css/estilo.css" rel="stylesheet" type="text/css" title="Boleto" />
+	</head>
+	<body>
+		<div id="mestre">
+			<div id="cabecalho">
+				<a href="http://www.boletobancario.com/"><img src="../imagens/logo.png" alt="Boleto Bancário . com" /></a>
+				<h1>Boleto Bancário . com</h1>
+				<h2>Desde 2000 no mercado de emissão de boletos!</h2>
+			</div>
+			<div id="conteudo">
+				<ul class="menu_int">
+					<li><a href="../index.jsp">Início</a></li>
+				</ul>
+				<h1>Manual de Customização PDF do Boleto Web/Free</h1>
+				<h2 class="esp">Introdução</h2>
+				<p>O Boleto Web/Free, além da customização no formato HTML, também pode ser customizado
+					no formato PDF de acordo com suas necessidades.<br />
+					Com 7 instruções é possível inserir imagens e texto de forma simples e ao mesmo tempo bastante flexível.<br />
+					Caso deseje utilizar esta funcionalidade, é imprescindível a leitura e entendimento deste documento.
+					
+				</p>
+				<h2 class="esp">Formato</h2>
+				<p>O campo customizado consiste de uma série de instruções separadas pelo caractere <strong>"|"</strong>.</p>
+				<p class="esp">Atenção:</p>
+				<dl>
+					<dd>Todos os campos de todas as instruções são obrigatórios.</dd>
+					<dd>Com exceção das instruções "nl", "color" e "rect", as demais instruções fazem com que a posição do "cursor"
+					fique a direita do elemento inserido. Chamamos esta posição de <strong>"esquerda atual"</strong>.</dd>
+				</dl>
+				<p>&nbsp;</p>
+				<h2 class="esp">Variáveis</h2>
+				<p>É possível utilizar variáveis no campo customizado, estas serão preenchidas automaticamente pelo sistema com os respectivos dados do boleto.</p>
+				<p>As variáveis que podem ser utilizadas são as seguintes:</p>
+				<dl>
+					<dd>{sac.nome}</dd>
+					<dd>{sac.primeiro-nome}</dd>
+					<dd>{sac.sobrenome}</dd>
+					<dd>{sac.cep}</dd>
+					<dd>{sac.cidade}</dd>
+					<dd>{sac.estado}</dd>
+					<dd>{sac.endereco}</dd>
+					<dd>{sac.cpf-cnpj}</dd>
+					<dd>{cedente.nome}</dd>
+					<dd>{cedente.cpf-cnpj}</dd>
+					<dd>{valor}</dd>
+					<dd>{vencimento}</dd>
+					<dd>{parcela}</dd>
+					<dd>{banco.nome}</dd>
+					<dd>{nosso.numero}</dd>
+					<dd>{num.doc}</dd>
+					<dd>{info.adicionais}</dd>
+				</dl>
+				<h2 class="esp">Instruções</h2>
+				<p>&nbsp;</p>
+				<p class="esp">1 - Instrução Image: Insere uma imagem no documento</p>
+				<dl>
+					<dd><strong>Formato: </strong><code>image[L|C|R][ScalePercentage]:[Filename.[jpg|png|gif]]</code></dd>
+					<dd class="inner"><strong>* [L|C|R] </strong>- Posição da Imagem: <strong>L</strong> (Left/Esquerda) - <strong>C</strong> (Center/Centro) - <strong>R</strong> (Right/Direita)</dd>
+					<dd class="inner"><strong>* [ScalePercentage] </strong>- Dimensionamento da imagem em relação ao seu tamanho original. Este campo é numérico e representa a porcentagem do tamanho.</dd>
+					<dd class="inner"><strong>* [Filename.[jpg|png|gif]] </strong>- O nome do arquivo cuja imagem se deseja inserir.<br />&nbsp;</dd>
+					
+					<dd><strong>Exemplos: </strong></dd>
+					<dd class="inner"><code>imageC63:cabecalho.png</code> - Insere a imagem cabecalho.png centralizada na linha atual. A imagem terá 63% de seu tamanho original.</dd>
+					<dd class="inner"><code>imageL100:logotipo.jpg</code> - Insere a imagem logotipo.jpg na esquerda atual. O tamanho original será preservado.</dd>
+					<dd class="inner"><code>imageR100:http://www.boletobancario.com/imagens/home/logo.png</code> - Insere a imagem logo.png na margem direita. A imagem será carregada da URL em questão.</dd>
+				</dl>
+				<p>&nbsp;</p>
+				<p class="esp">2 - Instrução Text: Insere um texto no documento.</p>
+				<dl>
+					<dd><strong>Formato: </strong><code>text[B|N][L|C|R][FontSize]:[Texto]</code></dd>
+					<dd class="inner"><strong>* [B|N] </strong>- Tipo de Fonte: <strong>B</strong> (Bold/Negrito) - <strong>N</strong> (Normal)</dd>
+					<dd class="inner"><strong>* [L|C|R] </strong>- Posição do Texto: <strong>L</strong> (Left/Esquerda) - <strong>C</strong> (Center/Centro) - <strong>R</strong> (Right/Direita)</dd>
+					<dd class="inner"><strong>* [FontSize] </strong>- Tamanho da Fonte: Campo numérico.</dd>
+					<dd class="inner"><strong>* [Texto] </strong>- O texto que se deseja inserir.<br />&nbsp;</dd>
+					
+					<dd><strong>Exemplos: </strong></dd>
+					<dd class="inner"><code>textBC16:Fatura Mensal</code> - Insere o texto "Fatura Mensal" em negrito, centralizado, com tamanho de fonte 16.</dd>
+					<dd class="inner"><code>textNL10:Desconto: 15%</code> - Insere o texto "Desconto: 15%" com fonte normal, na esquerda atual e tamanho de fonte 10.</dd>
+				</dl>
+				<p>&nbsp;</p>
+				<p class="esp">3 - Instrução New Line: Modifica a posição do cursor para uma nova linha e a margem esquerda.</p>
+				<dl>
+					<dd><strong>Formato: </strong><code>nl:[Lines]</code></dd>
+					<dd class="inner"><strong>* [Lines] </strong>- Número de linhas que se deseja "pular".<br />&nbsp;</dd>
+					
+					<dd><strong>Exemplos: </strong></dd>
+					<dd class="inner"><code>nl:1</code> - Move o cursor para a linha diretamente abaixo do último elemento inserido.</dd>
+					<dd class="inner"><code>nl:3</code> - Move o cursor para 3 linhas abaixo do último elemento inserido.<br />O tamanho do espaçamento será o tamanho do maior elemento inserido na linha.</dd>
+				</dl>
+				<p>&nbsp;</p>
+				<p class="esp">4 - Instrução Pos: Posiciona o cursor em uma coordenada [x, y] específica e altera a margem esquerda para os elementos seguintes.</p>
+				<dl>
+					<dd><strong>Formato: </strong><code>pos:[X],[Y]</code></dd>
+					<dd class="inner"><strong>* [X] </strong>- Coordenada X (horizontal). Número decimal, separado por ".". A parte esquerda do
+                        documento é a posição zero, sendo que para folhas A4 a borda direita corresponde a 595.0.<br />&nbsp;</dd>
+					<dd class="inner"><strong>* [Y] </strong>- Coordenada Y (vertical). Número decimal, separado por ".". A parte inferior do
+                        documento é a posição zero, sendo que para folhas A4 o topo corresponde a 842.0.<br />&nbsp;</dd>
+					
+					<dd><strong>Exemplos: </strong></dd>
+					<dd class="inner"><code>pos:140,717</code> - Posiciona o elemento seguinte na coordenada x = 140 e y = 717, e altera a margem esquerda para 140.</dd>
+					<dd class="inner"><code>pos:203.5,655.5</code> - Posiciona o elemento seguinte na coordenada x = 203.5 e y = 655.5, e altera a margem esquerda para 203.5</dd>
+				</dl>
+				<p>&nbsp;</p>
+				<p class="esp">5 - Instrução Rect: Desenha um retângulo ou uma linha em uma posição específica.</p>
+				<dl>
+					<dd><strong>Formato: </strong><code>rect:[LineWidth],[X],[Y],[Width],[Height]</code></dd>
+					<dd class="inner"><strong>* [LineWidth] </strong>- Define a espessura da linha. Número decimal separado por ".".<br />&nbsp;</dd>
+					<dd class="inner"><strong>* [X] </strong>- Coordenada X (horizontal) do canto inferior esquerdo do retângulo ou linha.
+                		Número decimal separado por ".".<br />&nbsp;</dd>
+					<dd class="inner"><strong>* [Y] </strong>- Coordenada Y (vertical) do canto inferior esquerdo do retângulo ou linha.
+                		Número decimal separado por ".".<br />&nbsp;</dd>
+                    <dd class="inner"><strong>* [Width] </strong>- Largura do retângulo ou comprimento da linha.
+                    	Número decimal separado por ".".<br />&nbsp;</dd>
+                    <dd class="inner"><strong>* [Height] </strong>- Altura do retângulo ou linha. Caso deseje inserir uma linha o valor deste
+                     	parâmetro deve ser igual ao parâmetro [LineWidth].<br />&nbsp;</dd>
+					
+					<dd><strong>Exemplos: </strong></dd>
+					<dd class="inner"><code>rect:0.8,350,500,200,0.8</code> - Desenha uma linha com espessura 0.8 iniciando na coordenada
+                        x = 350 e y = 500. A linha terá 200 pontos de comprimento.</dd>
+					<dd class="inner"><code>rect:0.3,20,500,200,210</code> - Desenha um retângulo com espessura de linha = 0.3 iniciando
+                        na coordenada x = 20 e y = 500, com 210 pontos de altura e 200 pontos de comprimento.</dd>
+				</dl>
+				<p>&nbsp;</p>
+				<p class="esp">6 - Instrução Color: Altera a cor para os elementos seguintes.</p>
+				<dl>
+					<dd><strong>Formato: </strong><code>color:[Red],[Green],[Blue]</code></dd>
+					<dd class="inner"><strong>* [Red] </strong>- Valor da cor vermelho, entre 0 e 255. Número inteiro.<br />&nbsp;</dd>
+					<dd class="inner"><strong>* [Green] </strong>- Valor da cor verde, entre 0 e 255. Número inteiro.<br />&nbsp;</dd>
+					<dd class="inner"><strong>* [Blue] </strong>- Valor da cor azul, entre 0 e 255. Número inteiro.<br />&nbsp;</dd>
+					
+					<dd><strong>Exemplos: </strong></dd>
+					<dd class="inner"><code>color:200,10,10</code> - Altera a cor para vermelho = 200, verde = 10 e azul = 10.</dd>
+					<dd class="inner"><code>color:0,0,0</code> - Altera a cor para vermelho = 0, verde = 0 e azul = 0 (preto).</dd>
+				</dl>
+				<p>&nbsp;</p>
+				<p class="esp">7 - Instrução Tab: Move a esquerda atual N posições.</p>
+				<dl>
+					<dd><strong>Formato: </strong><code>tab:[N]</code></dd>
+					<dd class="inner"><strong>* [N] </strong>- Número de posições que se deseja mover. Cada posição tem um espaçamento de 30 pontos.<br />&nbsp;</dd>
+					
+					<dd><strong>Exemplos: </strong></dd>
+					<dd class="inner"><code>tab:1</code> - Move a esquerda atual 30 pontos em direção a margem direita.</dd>
+					<dd class="inner"><code>tab:3</code> - Move a esquerda atual 90 pontos em direção a margem direita.</dd>
+				</dl>
+				<h2 class="esp">Exemplo completo</h2>
+				<dl>
+					<dd><code>imageC63:cabecalho.png|nl:1|</code></dd>
+					<dd><code>textBC20: |nl:1|</code></dd>
+					<dd><code>textBC16:Fatura mensal de serviços|nl:3|</code></dd>
+	    			<dd><code>textBL12:Descritivo dos serviços|nl:2|</code></dd>
+	    			<dd><code>tab:2|textNL11:* Quantidade contratada: 100 - |textBL11: R$ 20,00|nl:1|</code></dd>
+	    			<dd><code>tab:2|textNL11:* Quantidade excedente: 150 - |textBL11: R$ 40,00|nl:2|</code></dd>
+	    			<dd><code>tab:2|textNL11:* Desconto fidelidade: 14 Meses - |textBL11: 10% - (R$ 6,00)|nl:3|</code></dd>
+	    			<dd><code>textNL12:Total desta fatura:|textBL12: R$ {valor}|nl:4|</code></dd>
+	    			<dd><code>textNL10:Prezado(a) {sac.primeiro-nome}, verificamos que seu consumo excedeu em mais de 20% o plano contratado.|nl:1|</code></dd>
+	    			<dd><code>textNL10:Você pode alterar seu plano na área restrita de nosso site: |textBL10:www.boletobancario.com|</code></dd>
+	    			<dd><code>rect:0.5,10,450,575,0.5|</code></dd>
+	    			<dd><code>color:200,10,10|</code></dd>
+	    			<dd><code>rect:1,120,557,55,18</code></dd>
+				</dl>
+				<p>Juntamente com a sua cópia do sistema, estão disponíveis diversos exemplos, dentre eles um boleto em formato PDF customizado utilizando o conteúdo acima.
+				<a href="../samples/boletoPDFCustom.jsp">Clique aqui para visualizá-lo.</a></p>
+				<h2 class="esp">Considerações Finais</h2>
+				
+				<p>A customização deve ser programada com cautela, pois erros neste campo podem descaracterizar ou inviabilizar a geração do boleto.</p>
+				<p>As imagens utilizadas em uma customização devem estar no classpath de sua aplicação. No caso de aplicações web, dentro de WEB-INF/classes ou dentro de um JAR no diretório WEB-INF/lib.<br/>
+				As imagens também podem ser carregadas a partir de qualquer URL, por exemplo: http://www.boletobancario.com/imagens/home/logo.png.</p>
+				
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<ul class="menu_int">
+					<li><a href="../index.jsp">Voltar</a></li>
+				</ul>
+				<p>&nbsp;</p>
+			</div>
+			<div id="rodape"><address>Rua Des. Ermelino de Leão, 35 - 3º Andar - Centro - Curitiba - PR<br /></address></div>
+		</div>
+	</body>
+</html>
