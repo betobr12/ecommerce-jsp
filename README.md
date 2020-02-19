@@ -8,8 +8,8 @@
 <p>Gerenciamento de pedidos; </p>
 <p>Geração de boleto (precisa de alguns elementos);</p>
 <br/>
-<h3>Usar Tomcat versão 7.0</h3>
+<h4>Usar Tomcat versão 7.0</h4>
 <br/>
-PostgreSQL versão 1.8.4
+<h4>PostgreSQL versão 1.8.4</h4>
 <br/>
-Instalar o JDK e JRE
+<h4>Instalar o JDK e JRE</h4>
