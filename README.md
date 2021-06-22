@@ -1,5 +1,5 @@
 
-<h2>Sistema de e-commerce desenvolvido em HTML, JSP + PostgreSQL como banco de dados e Tomcat como servidor.</h2> 
+<h2>Sistema de e-commerce desenvolvido em HTML, JSP + PostgreSQL, rodando com Tomcat.</h2> 
  <br/>
 <h3>O site possui:</h3> 
 <p>Acesso administrador para: </p>
